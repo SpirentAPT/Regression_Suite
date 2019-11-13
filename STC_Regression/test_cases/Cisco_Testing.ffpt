@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<ParameterTree version="8.0.1.0">
+    <parameters escape="true">
+        <parameters xmlns:pt="http://www.fnfr.com/schemas/parameterTree">
+            <DUT>NCS5500</DUT>
+            <Release>2.0</Release>
+            <Platform>Cisco</Platform>
+            <URL>https://10.62.224.11</URL>
+            <TFTP_SERVER>10.62.224.10</TFTP_SERVER>
+            <ElasticSearch_Index>test10</ElasticSearch_Index>
+        </parameters>
+    </parameters>
+</ParameterTree>

@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<testCase version="8.0.1.0">
+    <procedures>
+        <item name="main">
+            <steps>
+                <item guid="b5144223-0653-432e-8ba2-e1d19bd0c701" action="open" session="s1">
+                    <command>
+                        <body>project://STC_Regression/session_profiles/VelocityRest.ffsp</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.OpenStepPropertyGroup">
+                        <stepProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        <sessionProperties type="com.fnfr.svt.adapter.automation.tools.common.documents.TransferableDocumentObject" transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.restful.RESTfulSessionProperties"/>
+                        <sessionClass type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        <sessionVersion type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                    </applicationProperties>
+                </item>
+                <item guid="022fec29-78e8-45f1-add3-fff4ba33bc21" action="GET" session="s1" estimatedStepExecutionTime="0.964">
+                    <command>
+                        <body>/velocity/api/auth/v2/token</body>
+                    </command>
+                    <postProcessing>
+                        <analysisRules>
+                            <item>
+                                <extractorInfo extractorType="query">
+                                    <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                        <query>xtoken()</query>
+                                    </extractorProperties>
+                                </extractorInfo>
+                                <processorInfo ruleType="store">
+                                    <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
+                                        <storageLocation>auth_token</storageLocation>
+                                        <responseValue type="com.fnfr.documents.PropertyBoolean">false</responseValue>
+                                        <variable type="com.fnfr.documents.PropertyBoolean">true</variable>
+                                    </ruleProperties>
+                                </processorInfo>
+                            </item>
+                        </analysisRules>
+                    </postProcessing>
+                    <applicationProperties type="com.fnfr.svt.adapter.automation.tools.common.documents.TransferableDocumentObject" transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.restful.RESTfulInvokeProperties" httpMethod="GET" httpMethod.inherit="false" action="/velocity/api/auth/v2/token" action.inherit="false">
+                        <authentication transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.AuthenticationProperties" acceptAllCertificates="true" acceptAllCertificates.inherit="false"/>
+                    </applicationProperties>
+                </item>
+                <item guid="7c4917df-e20e-449a-a45e-b605a3fc257e" action="GET" session="s1" estimatedStepExecutionTime="0.799">
+                    <command>
+                        <body>/ito/repository/v1/repository/main/_runlists/STC_Regression.vrl</body>
+                    </command>
+                    <postProcessing>
+                        <storeResponseAt>runlist_value</storeResponseAt>
+                        <storeResponseText>true</storeResponseText>
+                    </postProcessing>
+                    <applicationProperties type="com.fnfr.svt.adapter.automation.tools.common.documents.TransferableDocumentObject" transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.restful.RESTfulInvokeProperties" httpMethod="GET" httpMethod.inherit="false" action="/ito/repository/v1/repository/main/_runlists/STC_Regression.vrl" action.inherit="false">
+                        <authentication transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.AuthenticationProperties" acceptAllCertificates="true" acceptAllCertificates.inherit="false"/>
+                        <httpHeader inherit="false" transferableToolId="com.fnfr.itest.applications.webservices.restful">
+                            <memberClasses>
+                                <item>com.fnfr.itest.applications.webservices.properties.HTTPHeaderEntry</item>
+                            </memberClasses>
+                            <item transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.HTTPHeaderEntry" header="X-Auth-Token" header.inherit="false" value="$auth_token" value.inherit="false"/>
+                        </httpHeader>
+                    </applicationProperties>
+                </item>
+                <item guid="51881034-7c03-49cb-8b7d-ffa208ac1666" action="POST" session="s1" estimatedStepExecutionTime="0.387">
+                    <command>
+                        <body>/ito/executions/v1/runlists/STC_Regression.vrl</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.adapter.automation.tools.common.documents.TransferableDocumentObject" transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.restful.RESTfulInvokeProperties" httpMethod="POST" httpMethod.inherit="false" message="$runlist_value" message.inherit="false" action="/ito/executions/v1/runlists/STC_Regression.vrl" action.inherit="false">
+                        <authentication transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.AuthenticationProperties" acceptAllCertificates="true" acceptAllCertificates.inherit="false"/>
+                        <httpHeader inherit="false" transferableToolId="com.fnfr.itest.applications.webservices.restful">
+                            <memberClasses>
+                                <item>com.fnfr.itest.applications.webservices.properties.HTTPHeaderEntry</item>
+                            </memberClasses>
+                            <item transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.HTTPHeaderEntry" header="X-Auth-Token" header.inherit="false" value="$auth_token" value.inherit="false"/>
+                            <item transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.HTTPHeaderEntry" header="Content-Type" header.inherit="false" value="application/json" value.inherit="false"/>
+                        </httpHeader>
+                    </applicationProperties>
+                </item>
+            </steps>
+        </item>
+    </procedures>
+</testCase>

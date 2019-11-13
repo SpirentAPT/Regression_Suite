@@ -1,0 +1,343 @@
+<?xml version="1.0"?>
+<testCase version="8.0.1.0">
+    <procedures>
+        <item name="main">
+            <steps>
+                <item guid="beded647-7e97-410c-85ad-791b4b951235" action="open" session="Cisco1">
+                    <command>
+                        <body>project://STC_Regression/session_profiles/CSR_Router.ffsp</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.OpenStepPropertyGroup">
+                        <stepProperties type="com.fnfr.svt.editors.terminal.documents.StepDefaultProperties">
+                            <promptProperties>
+                                <stepPrompts>
+                                    <item name="prompt1" MatchMethod="WILDCARD">
+                                        <Content>*&gt;</Content>
+                                    </item>
+                                    <item name="prompt2" MatchMethod="WILDCARD">
+                                        <Content>*#</Content>
+                                    </item>
+                                </stepPrompts>
+                                <alsoUseSessionPrompts inherit="false">false</alsoUseSessionPrompts>
+                            </promptProperties>
+                        </stepProperties>
+                        <sessionProperties type="com.fnfr.svt.applications.ssh.documents.SSHProperties"/>
+                        <sessionClass type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        <sessionVersion type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                    </applicationProperties>
+                </item>
+                <item guid="bb8bcaaa-e2e6-46b4-b9b6-7674d64ad2bc" action="command" session="Cisco1" normalOffset="4.373" estimatedStepExecutionTime="0.012" useFieldsInCommand="false">
+                    <command>
+                        <body>enable </body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.editors.terminal.documents.StepDefaultProperties">
+                        <promptProperties>
+                            <stepPrompts>
+                                <item name="autoPrompt1">
+                                    <Content>Password: </Content>
+                                </item>
+                            </stepPrompts>
+                        </promptProperties>
+                    </applicationProperties>
+                </item>
+                <item guid="d71c2972-4159-4d41-9c40-41a0e8692449" action="command" session="Cisco1" normalOffset="2.815" estimatedStepExecutionTime="0.015" useFieldsInCommand="false">
+                    <command>
+                        <body masked="true">SrqvrrOjrgE=</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.editors.terminal.documents.StepDefaultProperties"/>
+                </item>
+                <item guid="9ab98d8a-7886-4c7c-80ca-ed789cc6e8ea" action="command" session="Cisco1">
+                    <command>
+                        <body>terminal length 0</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.editors.terminal.documents.StepDefaultProperties"/>
+                </item>
+                <item guid="80e3c157-821d-4cb4-b552-4132390dcb91" action="open" session="s1">
+                    <command>
+                        <body>project://STC_Regression/session_profiles/VelocityRest.ffsp</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.OpenStepPropertyGroup">
+                        <stepProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        <sessionProperties type="com.fnfr.svt.adapter.automation.tools.common.documents.TransferableDocumentObject" transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.restful.RESTfulSessionProperties" url="https://10.62.224.192" url.inherit="false"/>
+                        <sessionClass type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        <sessionVersion type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                    </applicationProperties>
+                </item>
+                <item guid="cf2913c9-5217-4750-979b-495df3d0208c" action="GET" session="s1">
+                    <command>
+                        <body>[param URL]/velocity/api/auth/v2/token</body>
+                    </command>
+                    <postProcessing>
+                        <analysisRules>
+                            <item>
+                                <extractorInfo extractorType="query">
+                                    <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                        <query>mapped/Json/xtoken</query>
+                                    </extractorProperties>
+                                </extractorInfo>
+                                <processorInfo ruleType="store">
+                                    <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
+                                        <storageLocation>token</storageLocation>
+                                        <responseValue type="com.fnfr.documents.PropertyBoolean">false</responseValue>
+                                        <variable type="com.fnfr.documents.PropertyBoolean">true</variable>
+                                    </ruleProperties>
+                                </processorInfo>
+                            </item>
+                        </analysisRules>
+                    </postProcessing>
+                    <applicationProperties type="com.fnfr.svt.adapter.automation.tools.common.documents.TransferableDocumentObject" transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.restful.RESTfulInvokeProperties" action="[param URL]/velocity/api/auth/v2/token" action.inherit="false" rawresponse="true" rawresponse.inherit="false" includeHttpHeaders.inherit="false" includeHttpStatusLine.inherit="false">
+                        <authentication transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.AuthenticationProperties" authenticationType="Basic" authenticationType.inherit="false" user="labadmin" user.inherit="false" password.masked="true" password="IrkscZoBrVUJor6ZZIWzzg==" password.inherit="false" acceptAllCertificates="true" acceptAllCertificates.inherit="false"/>
+                    </applicationProperties>
+                </item>
+                <item guid="330041d0-a8f3-4860-bcb4-28e249d0c7c0" action="GET" session="s1">
+                    <command>
+                        <body>[param URL]//ito/executions/v1/executions?filter=executionState::NOT_BEGUN|executionState::IN_PROGRESS|executionState::DISPATCHING&amp;filter=testCategory::STANDARD&amp;limit=10</body>
+                    </command>
+                    <postProcessing>
+                        <analysisRules>
+                            <item>
+                                <extractorInfo extractorType="query">
+                                    <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                        <query>mapped/Json/content/item/reportID</query>
+                                    </extractorProperties>
+                                </extractorInfo>
+                                <processorInfo ruleType="store">
+                                    <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
+                                        <storageLocation>reportID</storageLocation>
+                                        <responseValue type="com.fnfr.documents.PropertyBoolean">false</responseValue>
+                                        <variable type="com.fnfr.documents.PropertyBoolean">true</variable>
+                                    </ruleProperties>
+                                </processorInfo>
+                            </item>
+                        </analysisRules>
+                    </postProcessing>
+                    <applicationProperties type="com.fnfr.svt.adapter.automation.tools.common.documents.TransferableDocumentObject" transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.restful.RESTfulInvokeProperties" action="[param URL]//ito/executions/v1/executions?filter=executionState::NOT_BEGUN|executionState::IN_PROGRESS|executionState::DISPATCHING&amp;filter=testCategory::STANDARD&amp;limit=10" action.inherit="false" rawresponse="true" rawresponse.inherit="false" includeHttpHeaders.inherit="false" includeHttpStatusLine.inherit="false">
+                        <authentication transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.AuthenticationProperties" authenticationType="Basic" authenticationType.inherit="false" user="labadmin" user.inherit="false" password.masked="true" password="IrkscZoBrVUJor6ZZIWzzg==" password.inherit="false" acceptAllCertificates="true" acceptAllCertificates.inherit="false"/>
+                        <httpHeader inherit="false" transferableToolId="com.fnfr.itest.applications.webservices.restful">
+                            <memberClasses>
+                                <item>com.fnfr.itest.applications.webservices.properties.HTTPHeaderEntry</item>
+                            </memberClasses>
+                            <item transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.HTTPHeaderEntry" header="X-Auth-Token" header.inherit="false" value="$token" value.inherit="false"/>
+                            <item transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.HTTPHeaderEntry" header="Content-Type" header.inherit="false" value="application/json" value.inherit="false"/>
+                        </httpHeader>
+                    </applicationProperties>
+                </item>
+                <item guid="1dd84ffe-3c7f-4193-af11-788c6b2fda2b" action="eval" useFieldsInCommand="false">
+                    <command>
+                        <body>puts &quot;reportID : $reportID&quot;</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="9eb2bb34-1c19-441c-966d-8b38c21ffe52" action="eval" useFieldsInCommand="false">
+                    <command>
+                        <body>set url &quot;[param URL]/velocity/reports/executions/[set reportID]/info&quot;</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="ca0a7522-54c5-4efc-8cb1-adee889ea84e" action="eval" useFieldsInCommand="false">
+                    <command>
+                        <body>puts $url</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="1e337787-a720-4136-ab84-ffb4b6f5d163" action="eval" useFieldsInCommand="false">
+                    <command>
+                        <body>set TCID TC_009</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="040a2601-c202-430f-8ad5-777c98a6d99f" action="eval" useFieldsInCommand="false">
+                    <command>
+                        <body>set DUT [param DUT]</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="309f3153-c06f-4b1f-8be3-91ed12112ce2" action="eval" useFieldsInCommand="false">
+                    <command>
+                        <body>set Release [param Release]</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="0ee2d5d5-5aa4-4a80-803d-91599df79507" action="eval" useFieldsInCommand="false">
+                    <command>
+                        <body>set Platform [param Platform]</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="0ca1694e-84ed-46ce-917a-9aadd64fa08a" action="eval" useFieldsInCommand="false">
+                    <command>
+                        <body>set date [clock scan seconds]</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="6e10209f-717f-43be-b251-4358b86650f7" action="eval" useFieldsInCommand="false">
+                    <command>
+                        <body>puts [clock format $date -format %D:%H:%M:%S]</body>
+                    </command>
+                    <postProcessing>
+                        <analysisRules>
+                            <item>
+                                <extractorInfo extractorType="query">
+                                    <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                        <query>responseLine()</query>
+                                    </extractorProperties>
+                                </extractorInfo>
+                                <processorInfo ruleType="store">
+                                    <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
+                                        <storageLocation>var1</storageLocation>
+                                        <responseValue type="com.fnfr.documents.PropertyBoolean">false</responseValue>
+                                        <variable type="com.fnfr.documents.PropertyBoolean">true</variable>
+                                    </ruleProperties>
+                                </processorInfo>
+                            </item>
+                        </analysisRules>
+                    </postProcessing>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="a5a8ba69-5ffe-4b01-90ed-7669a6e1cfbd" action="eval" useFieldsInCommand="false">
+                    <command>
+                        <body>set Date $var1</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="b604973b-dfa7-44bc-9ff6-1e8f16914ba9" action="eval" useFieldsInCommand="false">
+                    <command>
+                        <body>set date1 [clock seconds]</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="a7e461f3-3522-4441-8534-82e2a6414630" action="eval" useFieldsInCommand="false">
+                    <command>
+                        <body>puts [clock format $date1 -format %d%b%Y%H%M%S]</body>
+                    </command>
+                    <postProcessing>
+                        <analysisRules>
+                            <item>
+                                <extractorInfo extractorType="query">
+                                    <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                        <query>group1()</query>
+                                    </extractorProperties>
+                                </extractorInfo>
+                                <processorInfo ruleType="store">
+                                    <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
+                                        <storageLocation>timestamp</storageLocation>
+                                        <responseValue type="com.fnfr.documents.PropertyBoolean">false</responseValue>
+                                        <variable type="com.fnfr.documents.PropertyBoolean">true</variable>
+                                    </ruleProperties>
+                                </processorInfo>
+                            </item>
+                        </analysisRules>
+                    </postProcessing>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="05dc535a-b0e0-4472-945c-a6b035c2f9a1" action="eval" useFieldsInCommand="false">
+                    <command>
+                        <body>puts $timestamp</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="ea52b432-43e9-411e-bd2a-558d3062d039" action="command" session="Cisco1" estimatedStepExecutionTime="0.013">
+                    <command>
+                        <body>ping 10.62.224.250</body>
+                    </command>
+                    <postProcessing>
+                        <analysisRules>
+                            <item>
+                                <extractorInfo extractorType="regex">
+                                    <extractorProperties type="com.fnfr.svt.mapping.regex.extractors.RegexExtractorPropertyGroup" useLineMode="true">
+                                        <regex>^Success rate is\\s+(\\d+)\\s+percent \\(\\d+/\\d+\\), round-trip min/avg/max =\\s+\\d+/\\d+/\\d+\\s+ms$</regex>
+                                    </extractorProperties>
+                                </extractorInfo>
+                                <processorInfo ruleType="assert">
+                                    <ruleProperties type="com.fnfr.svt.execution.builtin.processors.AssertionPropertyGroup">
+                                        <expression>$value == 100</expression>
+                                        <actionsWhenTrue>
+                                            <item actionId="DeclareExecutionIssue">
+                                                <actionProperties type="com.fnfr.svt.execution.builtin.actions.ExecutionIssuePropertyGroup" severity="OK">
+                                                    <message>PING to STC is successfull</message>
+                                                </actionProperties>
+                                            </item>
+                                            <item actionId="PassTestIfNotAlreadyFailed">
+                                                <actionProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                            </item>
+                                        </actionsWhenTrue>
+                                        <actionsWhenFalse>
+                                            <item actionId="DeclareExecutionIssue">
+                                                <actionProperties type="com.fnfr.svt.execution.builtin.actions.ExecutionIssuePropertyGroup">
+                                                    <message>PING to STC FAILED</message>
+                                                </actionProperties>
+                                            </item>
+                                            <item actionId="FailTest">
+                                                <actionProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                            </item>
+                                        </actionsWhenFalse>
+                                    </ruleProperties>
+                                </processorInfo>
+                            </item>
+                        </analysisRules>
+                    </postProcessing>
+                    <applicationProperties type="com.fnfr.svt.editors.terminal.documents.StepDefaultProperties">
+                        <completionProperties expectedIdleTime="0.349" expectedIdleTime.inherit="false"/>
+                    </applicationProperties>
+                </item>
+                <item guid="8d14fa98-7cb0-4df5-9935-28ca04030a1f" action="summarize" useFieldsInCommand="false">
+                    <postProcessing>
+                        <analysisRules>
+                            <item>
+                                <extractorInfo extractorType="query">
+                                    <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                        <query>TestResult()</query>
+                                    </extractorProperties>
+                                </extractorInfo>
+                                <processorInfo ruleType="store">
+                                    <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
+                                        <storageLocation>Test_Result</storageLocation>
+                                        <responseValue type="com.fnfr.documents.PropertyBoolean">false</responseValue>
+                                        <variable type="com.fnfr.documents.PropertyBoolean">true</variable>
+                                    </ruleProperties>
+                                </processorInfo>
+                            </item>
+                        </analysisRules>
+                    </postProcessing>
+                    <applicationProperties type="com.fnfr.svt.execution.kernel.ExecSummarizePropertyGroup"/>
+                </item>
+                <item guid="eedc0018-6765-4794-a5e6-013520816fc8" action="comment" useFieldsInCommand="false">
+                    <command>
+                        <body>Post results to ElasticSearch</body>
+                    </command>
+                    <nestedSteps>
+                        <item guid="0a21a459-839e-4209-8d42-5d8433b04a84" action="eval" useFieldsInCommand="false">
+                            <command>
+                                <body>set jsondata &quot;
+{
+\t\\&quot;TCID\\&quot;:\\&quot;$TCID\\&quot;,
+\t\\&quot;DUT\\&quot;:\\&quot;$DUT\\&quot;,
+\t\\&quot;Date\\&quot;:\\&quot;$Date\\&quot;,
+      \\&quot;Result\\&quot;:\\&quot;$Test_Result\\&quot;,
+\t\\&quot;Report\\&quot;:\\&quot;$url\\&quot;,
+\t\\&quot;Release\\&quot;:\\&quot;$Release\\&quot;,
+\t\\&quot;Platform\\&quot;:\\&quot;$Platform\\&quot;
+}
+&quot;</body>
+                            </command>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                        <item guid="677fe39f-b55a-44a9-bce6-32722a5de8c9" action="eval" useFieldsInCommand="false">
+                            <command>
+                                <body>set kibana iTE</body>
+                            </command>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                        <item guid="d89075ff-fd69-4d08-9bef-27f0700db3b9" action="call" useFieldsInCommand="false">
+                            <command>
+                                <body>Elasticsearch_Rest.fftc#postToElasticSearch -jsondata $jsondata -session $kibana</body>
+                            </command>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                    </nestedSteps>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+            </steps>
+        </item>
+    </procedures>
+</testCase>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<SessionTemplate version="8.0.0.201908290812">
+    <baseApplication>com.fnfr.svt.applications.spirent.testcenter.gui</baseApplication>
+    <sessionProperties type="com.fnfr.svt.adapter.automation.tools.common.documents.TransferableDocumentObject" transferableToolId="com.fnfr.svt.applications.spirent.testcenter.gui" transferableType="com.fnfr.itest.applications.spirent.testcenter.properties.TestCenterGUISessionProperties" ipAddress="10.62.224.250" ipAddress.inherit="false" ports="1/1,1/2" ports.inherit="false" config="project://STC_Regression/configuration/STCv_Router_OSPF_Traffic_Testing.xml" config.inherit="false" forceOwnership="true" forceOwnership.inherit="false" verifyPortBeforeReserve="true" verifyPortBeforeReserve.inherit="false">
+        <tcl transferableToolId="com.fnfr.svt.applications.spirent.testcenter.gui" transferableType="com.fnfr.itest.applications.spirent.testcenter.properties.TclInterpreterProperties" interpreterLocation="file:/C:/Tcl/bin/tclsh.exe" interpreterLocation.inherit="false" testcenterTclAPIDir="file:/C:/Program%20Files%20(x86)/Spirent%20Communications/Spirent%20TestCenter%204.95/Spirent%20TestCenter%20Application/" testcenterTclAPIDir.inherit="false"/>
+        <configureCustom16bitFilter transferableToolId="com.fnfr.svt.applications.spirent.testcenter.gui" transferableType="com.fnfr.itest.applications.spirent.testcenter.properties.Analyzer16BitFilterProperties" mask="ffff" mask.inherit="false" endOfRange="ffff" endOfRange.inherit="false"/>
+    </sessionProperties>
+    <responseLibrary inherit="false">project://STC_Regression/</responseLibrary>
+    <formMapLibrary inherit="false">project://STC_Regression/</formMapLibrary>
+</SessionTemplate>

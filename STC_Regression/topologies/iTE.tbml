@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tbml xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.teslaalliance.org/trs/tbml/1.0/tbml-core.xsd" xmlns="http://www.teslaalliance.org/trs/tbml/1.0">
+  <header>
+    <name>iTE</name>
+    <description></description>
+    <property name="author">Pashok</property>
+    <property name="dateCreated">2018-06-15T15:11:56.677+05:30</property>
+    <property name="dateModified">2019-10-09T18:06:22.327+05:30</property>
+    <property name="creationTool" vendor="com.fnfr">com.fnfr.itest.topology.tbml.diagram</property>
+    <property name="creationToolVersion" vendor="com.fnfr">8.0.0.201908060906</property>
+  </header>
+  <body>
+    <resources>
+      <resource guid="3ef4dc86-37a7-4d71-a7ea-2be826297c1c" id="resource_0" type="server">
+        <boundary height="100" width="100" x="609" y="183"/>
+        <property name="iconURI">platform:/plugin/com.fnfr.itest.topology.tbml.edit/icons/full/topology/server_32.gif</property>
+        <property name="name">iTE</property>
+        <property name="inventoryName"/>
+        <extensions type="com.fnfr.itest.session" xs:namespace="com.fnfr.itest.session">
+          <session baseSessionProfile="" name="ElasticSearch" provider="com.fnfr">
+            <sessionProfile version="8.0.0.201908290812">
+              <baseApplication>com.fnfr.itest.applications.webservices.restful</baseApplication>
+              <sessionProperties transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.restful.RESTfulSessionProperties" type="com.fnfr.svt.adapter.automation.tools.common.documents.TransferableDocumentObject" url="https://10.62.224.10:9200/" url.inherit="false"/>
+              <baseProfile>project://STC_Regression/session_profiles/ElasticSearch.ffsp</baseProfile>
+              <standalone>false</standalone>
+            </sessionProfile>
+          </session>
+        </extensions>
+      </resource>
+    </resources>
+    <connectivity/>
+  </body>
+  <illustration>
+    <layer/>
+  </illustration>
+</tbml>
