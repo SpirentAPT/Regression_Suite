@@ -1,0 +1,201 @@
+<?xml version="1.0"?>
+<testCase version="8.0.1.0" entryPoint="OpenLoadSchemaToElasticSearch">
+    <general>
+        <isProcedureLibrary>true</isProcedureLibrary>
+        <sessionClass sessionType="project://Landslide_Regression/session_profiles/ElasticSearch.ffsp"/>
+    </general>
+    <execution>
+        <parameters version="8.0.1.0">
+            <parameters escape="true">
+                <parameters xmlns:pt="http://www.fnfr.com/schemas/parameterTree">
+                    <URL>https://10.62.224.11</URL>
+                </parameters>
+            </parameters>
+        </parameters>
+    </execution>
+    <procedures>
+        <item name="OpenLoadSchemaToElasticSearch" isPublic="true" defaultSessionProfile="project://Landslide_Regression/session_profiles/ElasticSearch.ffsp">
+            <steps>
+                <item guid="20ca4bbf-5156-4823-9d76-e45d17802b2a" action="open" session="$session">
+                    <command>
+                        <body>project://Landslide_Regression/session_profiles/ElasticSearch.ffsp</body>
+                    </command>
+                    <postProcessing>
+                        <analysisRules>
+                            <item>
+                                <extractorInfo extractorType="none">
+                                    <extractorProperties type="com.fnfr.svt.documents.EmptyExtractorPropertyGroup"/>
+                                </extractorInfo>
+                                <processorInfo ruleType="message">
+                                    <ruleProperties type="com.fnfr.svt.execution.builtin.processors.MessageProcessorPropertyGroup" severity="Information">
+                                        <message>elasticsearch session opened</message>
+                                        <tag sub="false" defaultValue=""/>
+                                    </ruleProperties>
+                                </processorInfo>
+                            </item>
+                        </analysisRules>
+                    </postProcessing>
+                    <applicationProperties type="com.fnfr.svt.documents.OpenStepPropertyGroup">
+                        <stepProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        <sessionProperties type="com.fnfr.svt.adapter.automation.tools.common.documents.TransferableDocumentObject" transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.restful.RESTfulSessionProperties"/>
+                        <sessionClass type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        <sessionVersion type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                    </applicationProperties>
+                </item>
+                <item guid="8f5567d3-ad43-4454-b42b-12bdce352b0f" action="PUT" session="$session">
+                    <command>
+                        <body>/[param ElasticSearch_Index]</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.adapter.automation.tools.common.documents.TransferableDocumentObject" transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.restful.RESTfulInvokeProperties" action="/[param ElasticSearch_Index]" action.inherit="false">
+                        <message inherit="false">{
+    &quot;mappings&quot;: {
+      &quot;spirent&quot;: {
+        &quot;properties&quot;: {
+          &quot;TCID&quot;: {&quot;type&quot;: &quot;string&quot;},
+          &quot;DUT&quot;: {&quot;type&quot;: &quot;string&quot;},
+          &quot;Date&quot;: {&quot;type&quot;: &quot;Date&quot;},
+\t    &quot;Result&quot;: {&quot;type&quot;: &quot;string&quot;},
+          &quot;Report&quot;: {&quot;type&quot;: &quot;string&quot;},
+\t    &quot;Release&quot;: {&quot;type&quot;: &quot;string&quot;},
+\t    &quot;Platform&quot;: {&quot;type&quot;: &quot;string&quot;}
+\t}
+     }
+   }
+}</message>
+                        <authentication transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.AuthenticationProperties" acceptAllCertificates="true" acceptAllCertificates.inherit="false"/>
+                    </applicationProperties>
+                </item>
+                <item guid="8cf78a6a-7306-4742-848f-7d46d00e4113" action="close" session="$session">
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+            </steps>
+            <arguments>
+                <item name="session"/>
+            </arguments>
+        </item>
+        <item name="OpenLoadSchemaToElasticSearch_Velocity" isPublic="true" defaultSessionProfile="project://Landslide_Regression/session_profiles/ElasticSearch.ffsp">
+            <steps>
+                <item guid="35d63b7c-07e1-40ef-a47d-ec4af1b7306a" action="open" session="$session" skip="true">
+                    <command>
+                        <body>project://Landslide_Regression/session_profiles/ElasticSearch.ffsp</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.OpenStepPropertyGroup">
+                        <stepProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        <sessionProperties type="com.fnfr.svt.adapter.automation.tools.common.documents.TransferableDocumentObject" transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.restful.RESTfulSessionProperties">
+                            <authentication transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.AuthenticationProperties" acceptAllCertificates="true" acceptAllCertificates.inherit="false"/>
+                        </sessionProperties>
+                        <sessionClass type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        <sessionVersion type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                    </applicationProperties>
+                </item>
+                <item guid="cfc12c7c-8030-44e2-a802-850642039e50" action="PUT" session="$session" skip="true">
+                    <command>
+                        <body>/velocity7_0_1/spirent</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.adapter.automation.tools.common.documents.TransferableDocumentObject" transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.restful.RESTfulInvokeProperties" action="/velocity7_0_1/spirent" action.inherit="false">
+                        <message inherit="false">{
+  &quot;Platform&quot;: {&quot;type&quot;:&quot;string&quot;},
+  &quot;Feature&quot;:{&quot;type&quot;:&quot;string&quot;},
+  &quot;Version&quot; : {&quot;type&quot;:&quot;string&quot;},
+  &quot;Technology&quot;:{&quot;type&quot;:&quot;string&quot;},
+  &quot;Subtechnology&quot;:{&quot;type&quot;:&quot;string&quot;},,
+  &quot;Test&quot; : {&quot;type&quot;:&quot;string&quot;},
+  &quot;Result&quot; : {&quot;type&quot;:&quot;string&quot;},
+  &quot;Report&quot;: {&quot;type&quot;:&quot;string&quot;}
+}</message>
+                        <authentication transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.AuthenticationProperties" acceptAllCertificates="true" acceptAllCertificates.inherit="false"/>
+                    </applicationProperties>
+                </item>
+                <item guid="fb03c5a8-d733-4bc3-87ff-debcc9a8b34b" action="close" session="$session" skip="true">
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+            </steps>
+            <arguments>
+                <item name="session"/>
+            </arguments>
+        </item>
+        <item name="postToElasticSearch" isPublic="true" defaultSessionProfile="project://Landslide_Regression/session_profiles/ElasticSearch.ffsp">
+            <steps>
+                <item guid="14996b28-b962-4be9-99a6-85713c8439f6" action="open" session="$session">
+                    <command>
+                        <body>project://Landslide_Regression/session_profiles/ElasticSearch.ffsp</body>
+                    </command>
+                    <postProcessing>
+                        <analysisRules>
+                            <item>
+                                <extractorInfo extractorType="none">
+                                    <extractorProperties type="com.fnfr.svt.documents.EmptyExtractorPropertyGroup"/>
+                                </extractorInfo>
+                                <processorInfo ruleType="message">
+                                    <ruleProperties type="com.fnfr.svt.execution.builtin.processors.MessageProcessorPropertyGroup" severity="Information">
+                                        <message>elasticsearch session opened</message>
+                                        <tag sub="false" defaultValue=""/>
+                                    </ruleProperties>
+                                </processorInfo>
+                            </item>
+                        </analysisRules>
+                    </postProcessing>
+                    <applicationProperties type="com.fnfr.svt.documents.OpenStepPropertyGroup">
+                        <stepProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        <sessionProperties type="com.fnfr.svt.adapter.automation.tools.common.documents.TransferableDocumentObject" transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.restful.RESTfulSessionProperties">
+                            <authentication transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.AuthenticationProperties" acceptAllCertificates="true" acceptAllCertificates.inherit="false"/>
+                        </sessionProperties>
+                        <sessionClass type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        <sessionVersion type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                    </applicationProperties>
+                </item>
+                <item guid="46db8d65-7ac0-48d2-af11-11a43304bffb" action="POST" session="$session" normalOffset="38.945" estimatedStepExecutionTime="1.205">
+                    <command>
+                        <body>/[param ElasticSearch_Index]/spirent</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.adapter.automation.tools.common.documents.TransferableDocumentObject" transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.restful.RESTfulInvokeProperties" message="$jsondata" message.inherit="false" action="/[param ElasticSearch_Index]/spirent" action.inherit="false">
+                        <authentication transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.AuthenticationProperties" acceptAllCertificates="true" acceptAllCertificates.inherit="false"/>
+                    </applicationProperties>
+                </item>
+                <item guid="37539108-8b0c-4519-a9d3-daa4a546bd57" action="close" session="$session">
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+            </steps>
+            <arguments>
+                <item name="jsondata">
+                    <description>json formatted data </description>
+                    <isMandatory>true</isMandatory>
+                </item>
+                <item name="session"/>
+            </arguments>
+        </item>
+        <item name="postToElasticSearch_Velocity" isPublic="true" defaultSessionProfile="project://Landslide_Regression/session_profiles/ElasticSearch.ffsp">
+            <steps>
+                <item guid="f336f7df-c391-4503-a547-944e68214820" action="open" session="$session" skip="true">
+                    <command>
+                        <body>project://Landslide_Regression/session_profiles/ElasticSearch.ffsp</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.OpenStepPropertyGroup">
+                        <stepProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        <sessionProperties type="com.fnfr.svt.adapter.automation.tools.common.documents.TransferableDocumentObject" transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.restful.RESTfulSessionProperties"/>
+                        <sessionClass type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        <sessionVersion type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                    </applicationProperties>
+                </item>
+                <item guid="1b02c2af-fdb4-4171-8e6c-2707c6615769" action="POST" session="$session" skip="true" normalOffset="38.945" estimatedStepExecutionTime="1.205">
+                    <command>
+                        <body>/velocity7_0_1/spirent</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.adapter.automation.tools.common.documents.TransferableDocumentObject" transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.restful.RESTfulInvokeProperties" message="$jsondata" message.inherit="false" action="/velocity7_0_1/spirent" action.inherit="false">
+                        <authentication transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.AuthenticationProperties" acceptAllCertificates="true" acceptAllCertificates.inherit="false"/>
+                    </applicationProperties>
+                </item>
+                <item guid="f40c8c75-3d54-4fb3-860c-c4e45cbb42e9" action="close" session="$session" skip="true">
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+            </steps>
+            <arguments>
+                <item name="jsondata">
+                    <description>json formatted data </description>
+                    <isMandatory>true</isMandatory>
+                </item>
+                <item name="session"/>
+            </arguments>
+        </item>
+    </procedures>
+</testCase>

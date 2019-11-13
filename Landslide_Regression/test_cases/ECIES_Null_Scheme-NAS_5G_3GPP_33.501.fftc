@@ -1,0 +1,476 @@
+<?xml version="1.0"?>
+<testCase version="8.0.0.201908290812">
+    <procedures>
+        <item name="main">
+            <steps>
+                <item guid="f82727f5-ccaf-4dd8-94ea-e2811ff9354c" action="open" session="t1">
+                    <command>
+                        <body>project://Landslide_Regression/session_profiles/Lansslide_Rest.ffsp</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.OpenStepPropertyGroup">
+                        <stepProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        <sessionProperties type="com.fnfr.svt.adapter.automation.tools.common.documents.TransferableDocumentObject" transferableToolId="com.spirent.itest.applications.landsliderest" transferableType="com.spirent.itest.applications.landsliderest.properties.LandslideRestSessionProperties" landslideRESTAPI="http://10.62.224.23:8080/api/" landslideRESTAPI.inherit="false"/>
+                        <sessionClass type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        <sessionVersion type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                    </applicationProperties>
+                </item>
+                <item guid="e1ae5aa1-fece-470d-9ec6-a542a7963765" action="RetrieveTestSession" session="t1" estimatedStepExecutionTime="0.392">
+                    <postProcessing>
+                        <analysisRules>
+                            <item>
+                                <extractorInfo extractorType="query">
+                                    <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                        <query>handle()</query>
+                                    </extractorProperties>
+                                </extractorInfo>
+                                <processorInfo ruleType="store">
+                                    <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
+                                        <storageLocation>handle0</storageLocation>
+                                        <responseValue type="com.fnfr.documents.PropertyBoolean">false</responseValue>
+                                        <variable type="com.fnfr.documents.PropertyBoolean">true</variable>
+                                    </ruleProperties>
+                                </processorInfo>
+                            </item>
+                        </analysisRules>
+                    </postProcessing>
+                    <applicationProperties type="com.fnfr.itest.platform2.shared.documents.ntaf.NtafTransferableDocumentObject" action="RetrieveTestSession" subharness="http://spirent.com/NTAF/harness/iTest/LandslideRest/Main" harness="http://spirent.com/NTAF/harness/iTest/LandslideRest/Main" harnessName="http://spirent.com/NTAF/harness/iTest/LandslideRest/Main" library="14969" library.inherit="false" library.sub="false" name="5G Attach-AMF Node-SMF Node-UPF Node- AMF Nodal_15.1.0" name.inherit="false" name.sub="false"/>
+                </item>
+                <item guid="fca44ed3-390a-41ad-bb7c-ec4034975cd6" action="Run" session="t1" normalOffset="16.222" estimatedStepExecutionTime="8.265">
+                    <command>
+                        <body>-testHandle $handle0</body>
+                    </command>
+                    <postProcessing>
+                        <analysisRules>
+                            <item>
+                                <extractorInfo extractorType="query">
+                                    <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                        <query>id()</query>
+                                    </extractorProperties>
+                                </extractorInfo>
+                                <processorInfo ruleType="store">
+                                    <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
+                                        <storageLocation>runId0</storageLocation>
+                                        <responseValue type="com.fnfr.documents.PropertyBoolean">false</responseValue>
+                                        <variable type="com.fnfr.documents.PropertyBoolean">true</variable>
+                                    </ruleProperties>
+                                </processorInfo>
+                            </item>
+                        </analysisRules>
+                    </postProcessing>
+                    <applicationProperties type="com.fnfr.itest.platform2.shared.documents.ntaf.NtafTransferableDocumentObject" action="Run" subharness="http://spirent.com/NTAF/harness/iTest/LandslideRest/Main" harness="http://spirent.com/NTAF/harness/iTest/LandslideRest/Main" harnessName="http://spirent.com/NTAF/harness/iTest/LandslideRest/Main" testHandle="$handle0" testHandle.inherit="false"/>
+                </item>
+                <item guid="ac2af006-54a9-4b50-8709-628e8007ac42" action="open" session="s1">
+                    <command>
+                        <body>project://Landslide_Regression/session_profiles/VelocityRest.ffsp</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.OpenStepPropertyGroup">
+                        <stepProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        <sessionProperties type="com.fnfr.svt.adapter.automation.tools.common.documents.TransferableDocumentObject" transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.restful.RESTfulSessionProperties" url="https://10.62.224.192" url.inherit="false"/>
+                        <sessionClass type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        <sessionVersion type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                    </applicationProperties>
+                </item>
+                <item guid="cc7117bf-a7de-4c35-9d1e-c55d7ac5c7a3" action="GET" session="s1">
+                    <command>
+                        <body>[param URL]/velocity/api/auth/v2/token</body>
+                    </command>
+                    <postProcessing>
+                        <analysisRules>
+                            <item>
+                                <extractorInfo extractorType="query">
+                                    <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                        <query>mapped/Json/xtoken</query>
+                                    </extractorProperties>
+                                </extractorInfo>
+                                <processorInfo ruleType="store">
+                                    <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
+                                        <storageLocation>token</storageLocation>
+                                        <responseValue type="com.fnfr.documents.PropertyBoolean">false</responseValue>
+                                        <variable type="com.fnfr.documents.PropertyBoolean">true</variable>
+                                    </ruleProperties>
+                                </processorInfo>
+                            </item>
+                        </analysisRules>
+                    </postProcessing>
+                    <applicationProperties type="com.fnfr.svt.adapter.automation.tools.common.documents.TransferableDocumentObject" transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.restful.RESTfulInvokeProperties" action="[param URL]/velocity/api/auth/v2/token" action.inherit="false" rawresponse="true" rawresponse.inherit="false" includeHttpHeaders.inherit="false" includeHttpStatusLine.inherit="false">
+                        <authentication transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.AuthenticationProperties" authenticationType="Basic" authenticationType.inherit="false" user="labadmin" user.inherit="false" password.masked="true" password="IrkscZoBrVUJor6ZZIWzzg==" password.inherit="false" acceptAllCertificates="true" acceptAllCertificates.inherit="false"/>
+                    </applicationProperties>
+                </item>
+                <item guid="fdfdded0-ffe5-436a-85b4-d6ee950abc74" action="GET" session="s1">
+                    <command>
+                        <body>[param URL]//ito/executions/v1/executions?filter=executionState::NOT_BEGUN|executionState::IN_PROGRESS|executionState::DISPATCHING&amp;filter=testCategory::STANDARD&amp;limit=10</body>
+                    </command>
+                    <postProcessing>
+                        <analysisRules>
+                            <item>
+                                <extractorInfo extractorType="query">
+                                    <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                        <query>mapped/Json/content/item/reportID</query>
+                                    </extractorProperties>
+                                </extractorInfo>
+                                <processorInfo ruleType="store">
+                                    <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
+                                        <storageLocation>reportID</storageLocation>
+                                        <responseValue type="com.fnfr.documents.PropertyBoolean">false</responseValue>
+                                        <variable type="com.fnfr.documents.PropertyBoolean">true</variable>
+                                    </ruleProperties>
+                                </processorInfo>
+                            </item>
+                        </analysisRules>
+                    </postProcessing>
+                    <applicationProperties type="com.fnfr.svt.adapter.automation.tools.common.documents.TransferableDocumentObject" transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.restful.RESTfulInvokeProperties" action="[param URL]//ito/executions/v1/executions?filter=executionState::NOT_BEGUN|executionState::IN_PROGRESS|executionState::DISPATCHING&amp;filter=testCategory::STANDARD&amp;limit=10" action.inherit="false" rawresponse="true" rawresponse.inherit="false" includeHttpHeaders.inherit="false" includeHttpStatusLine.inherit="false">
+                        <authentication transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.AuthenticationProperties" authenticationType="Basic" authenticationType.inherit="false" user="labadmin" user.inherit="false" password.masked="true" password="IrkscZoBrVUJor6ZZIWzzg==" password.inherit="false" acceptAllCertificates="true" acceptAllCertificates.inherit="false"/>
+                        <httpHeader inherit="false" transferableToolId="com.fnfr.itest.applications.webservices.restful">
+                            <memberClasses>
+                                <item>com.fnfr.itest.applications.webservices.properties.HTTPHeaderEntry</item>
+                            </memberClasses>
+                            <item transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.HTTPHeaderEntry" header="X-Auth-Token" header.inherit="false" value="$token" value.inherit="false"/>
+                            <item transferableToolId="com.fnfr.itest.applications.webservices.restful" transferableType="com.fnfr.itest.applications.webservices.properties.HTTPHeaderEntry" header="Content-Type" header.inherit="false" value="application/json" value.inherit="false"/>
+                        </httpHeader>
+                    </applicationProperties>
+                </item>
+                <item guid="64ad5b6f-191c-4db1-b4b7-78953237db5d" action="eval" useFieldsInCommand="false">
+                    <command>
+                        <body>puts &quot;reportID : $reportID&quot;</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="51c37830-cab2-4e3a-b1e6-36b20a90ffc6" action="eval" useFieldsInCommand="false">
+                    <command>
+                        <body>set url &quot;[param URL]/velocity/reports/executions/[set reportID]/info&quot;</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="a3b70d1f-fe1c-4c73-be9e-fec39601aa5c" action="eval" useFieldsInCommand="false">
+                    <command>
+                        <body>puts $url</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="5937012a-fa58-499a-9ca9-854f2634a429" action="eval" useFieldsInCommand="false">
+                    <command>
+                        <body>set TCID TC_014</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="11cfc260-be69-4320-8c91-496bddf75c87" action="eval" useFieldsInCommand="false">
+                    <command>
+                        <body>set DUT [param DUT]</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="0d8e933c-1338-491a-bfa1-d65abc9e21cf" action="eval" useFieldsInCommand="false">
+                    <command>
+                        <body>set Release [param Release]</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="50e0713d-cbc1-4a12-a74b-5131b930bb7e" action="eval" useFieldsInCommand="false">
+                    <command>
+                        <body>set Platform [param Platform]</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="e58bc24c-4afd-4468-a929-25b5022f1497" action="eval" useFieldsInCommand="false">
+                    <command>
+                        <body>set date [clock scan seconds]</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="06125338-f3e3-493f-844b-594925f7bd8a" action="eval" useFieldsInCommand="false">
+                    <command>
+                        <body>puts [clock format $date -format %D:%H:%M:%S]</body>
+                    </command>
+                    <postProcessing>
+                        <analysisRules>
+                            <item>
+                                <extractorInfo extractorType="query">
+                                    <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                        <query>responseLine()</query>
+                                    </extractorProperties>
+                                </extractorInfo>
+                                <processorInfo ruleType="store">
+                                    <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
+                                        <storageLocation>var1</storageLocation>
+                                        <responseValue type="com.fnfr.documents.PropertyBoolean">false</responseValue>
+                                        <variable type="com.fnfr.documents.PropertyBoolean">true</variable>
+                                    </ruleProperties>
+                                </processorInfo>
+                            </item>
+                        </analysisRules>
+                    </postProcessing>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="bfbb4eb6-2b6a-4332-8a90-2d4f40e85284" action="eval" useFieldsInCommand="false">
+                    <command>
+                        <body>set Date $var1</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="07e6fa94-01f8-40e4-8927-54ea2a8d941e" action="sleep">
+                    <command>
+                        <body>30</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="03687fdf-70b6-4d0d-aa73-dd31ff98c740" action="for" useFieldsInCommand="false">
+                    <command>
+                        <body>{set j 0} {$j &lt; 4} {incr j}</body>
+                    </command>
+                    <nestedSteps>
+                        <item guid="84503f23-3b2e-44b5-ba9e-de9ed7afe644" action="ShowRunningTestFavoritesMeasurements" session="t1" normalOffset="5.783" estimatedStepExecutionTime="0.029">
+                            <command>
+                                <body>-runningTestId $runId0</body>
+                            </command>
+                            <postProcessing>
+                                <storeResponseAt>ret</storeResponseAt>
+                            </postProcessing>
+                            <applicationProperties type="com.fnfr.itest.platform2.shared.documents.ntaf.NtafTransferableDocumentObject" action="ShowRunningTestFavoritesMeasurements" subharness="http://spirent.com/NTAF/harness/iTest/LandslideRest/Main" harness="http://spirent.com/NTAF/harness/iTest/LandslideRest/Main" harnessName="http://spirent.com/NTAF/harness/iTest/LandslideRest/Main" runningTestId="$runId0" runningTestId.inherit="false"/>
+                        </item>
+                        <item guid="b96b5f7b-38ca-47bb-8f67-05331d82e4e3" action="eval" useFieldsInCommand="false">
+                            <command>
+                                <body>set output [regexp -all -inline {\\s+ts\\d+::tc\\d+::([^\\r\\n]+)\\s+:\\s+(\\d+)} $ret]</body>
+                            </command>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                        <item guid="f7cfdfcb-0d38-451f-aca0-94e7fec77d47" action="eval" useFieldsInCommand="false">
+                            <command>
+                                <body>puts $output</body>
+                            </command>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                        <item guid="f0ebec34-ad1d-4f35-a8dc-fdf0acb83cc4" action="eval" useFieldsInCommand="false">
+                            <command>
+                                <body>set result {}</body>
+                            </command>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                        <item guid="292eeea9-e234-4a22-a449-038d71e0b02c" action="for" useFieldsInCommand="false">
+                            <command>
+                                <body>{set i 0} {$i &lt; [expr [llength $output]/3]} {incr i}</body>
+                            </command>
+                            <nestedSteps>
+                                <item guid="6c947fda-ff69-4941-922a-52054b3e2b07" action="eval" useFieldsInCommand="false">
+                                    <command>
+                                        <body>lappend result &quot;[lindex $output [expr  1 + 3 * $i]] : [lindex $output [expr 2 + 3 * $i]]&quot;</body>
+                                    </command>
+                                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                </item>
+                            </nestedSteps>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                        <item guid="ed67a224-0e70-4e1a-8b2e-8cd2d4bdde0f" action="eval" useFieldsInCommand="false">
+                            <command>
+                                <body>puts $result</body>
+                            </command>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                        <item guid="03d372f4-602d-4a60-810d-823f91d82913" action="eval" useFieldsInCommand="false">
+                            <command>
+                                <body>puts [join $result \\n]</body>
+                            </command>
+                            <postProcessing>
+                                <storeResponseAt>favorites</storeResponseAt>
+                            </postProcessing>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                        <item guid="331dd5be-7b79-4b58-9649-88a6a1797c47" action="eval" useFieldsInCommand="false">
+                            <command>
+                                <body>puts &quot;Favorites&quot;</body>
+                            </command>
+                            <postProcessing>
+                                <analysisRules>
+                                    <item>
+                                        <extractorInfo extractorType="none">
+                                            <extractorProperties type="com.fnfr.svt.documents.EmptyExtractorPropertyGroup"/>
+                                        </extractorInfo>
+                                        <processorInfo ruleType="assert">
+                                            <ruleProperties type="com.fnfr.svt.execution.builtin.processors.AssertionPropertyGroup">
+                                                <expression>$value == 1</expression>
+                                                <actionsWhenTrue>
+                                                    <item actionId="DeclareExecutionIssue">
+                                                        <actionProperties type="com.fnfr.svt.execution.builtin.actions.ExecutionIssuePropertyGroup" severity="Information">
+                                                            <message>$favorites</message>
+                                                        </actionProperties>
+                                                    </item>
+                                                </actionsWhenTrue>
+                                                <actionsWhenFalse>
+                                                    <item actionId="DeclareExecutionIssue">
+                                                        <actionProperties type="com.fnfr.svt.execution.builtin.actions.ExecutionIssuePropertyGroup" severity="Information">
+                                                            <message>$favorites</message>
+                                                        </actionProperties>
+                                                    </item>
+                                                </actionsWhenFalse>
+                                            </ruleProperties>
+                                        </processorInfo>
+                                    </item>
+                                </analysisRules>
+                            </postProcessing>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                        <item guid="176d8489-a7ae-420d-9ccf-b1151c072db3" action="sleep">
+                            <command>
+                                <body>15</body>
+                            </command>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                    </nestedSteps>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+                <item guid="a0533693-3e41-440a-8af9-2aab0b385ca7" action="ShowRunningTestFavoritesMeasurements" session="t1" normalOffset="5.783" estimatedStepExecutionTime="0.029">
+                    <command>
+                        <body>-runningTestId $runId0</body>
+                    </command>
+                    <postProcessing>
+                        <analysisRules>
+                            <item>
+                                <extractorInfo extractorType="query">
+                                    <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                        <query>favorites0_ts0__tc2__PFCPAssociation__AssociationSetupRequestRcvd()</query>
+                                    </extractorProperties>
+                                </extractorInfo>
+                                <processorInfo ruleType="assert">
+                                    <ruleProperties type="com.fnfr.svt.execution.builtin.processors.AssertionPropertyGroup">
+                                        <expression>$value == 1</expression>
+                                        <actionsWhenTrue>
+                                            <item actionId="DeclareExecutionIssue">
+                                                <actionProperties type="com.fnfr.svt.execution.builtin.actions.ExecutionIssuePropertyGroup" severity="OK">
+                                                    <message>&quot;ECIES NUll Scheme NAS_5G_3GPP&quot; test PASSED</message>
+                                                </actionProperties>
+                                            </item>
+                                            <item actionId="PassTestIfNotAlreadyFailed">
+                                                <actionProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                            </item>
+                                        </actionsWhenTrue>
+                                        <actionsWhenFalse>
+                                            <item actionId="DeclareExecutionIssue">
+                                                <actionProperties type="com.fnfr.svt.execution.builtin.actions.ExecutionIssuePropertyGroup">
+                                                    <message>&quot;ECIES NUll Scheme NAS_5G_3GPP&quot; test FAILED</message>
+                                                </actionProperties>
+                                            </item>
+                                            <item actionId="FailTest">
+                                                <actionProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                                            </item>
+                                        </actionsWhenFalse>
+                                    </ruleProperties>
+                                </processorInfo>
+                            </item>
+                        </analysisRules>
+                        <storeResponseAt>ret</storeResponseAt>
+                    </postProcessing>
+                    <applicationProperties type="com.fnfr.itest.platform2.shared.documents.ntaf.NtafTransferableDocumentObject" action="ShowRunningTestFavoritesMeasurements" subharness="http://spirent.com/NTAF/harness/iTest/LandslideRest/Main" harness="http://spirent.com/NTAF/harness/iTest/LandslideRest/Main" harnessName="http://spirent.com/NTAF/harness/iTest/LandslideRest/Main" runningTestId="$runId0" runningTestId.inherit="false"/>
+                </item>
+                <item guid="29123154-9f50-440a-a31e-9ebeaaa51e32" action="StopRunningTest" session="t1" normalOffset="7.861" estimatedStepExecutionTime="0.011">
+                    <applicationProperties type="com.fnfr.itest.platform2.shared.documents.ntaf.NtafTransferableDocumentObject" action="StopRunningTest" subharness="http://spirent.com/NTAF/harness/iTest/LandslideRest/Main" harness="http://spirent.com/NTAF/harness/iTest/LandslideRest/Main" harnessName="http://spirent.com/NTAF/harness/iTest/LandslideRest/Main" runningTestId="$runId0" runningTestId.inherit="false"/>
+                </item>
+                <item guid="587a3a5d-c92e-48a7-9543-2db2371c7e94" action="ShowRunningTest" session="t1" estimatedStepExecutionTime="1.164">
+                    <command>
+                        <body>-runningTestId $runId0 -fullInfo true</body>
+                    </command>
+                    <postProcessing>
+                        <analysisRules>
+                            <item>
+                                <extractorInfo extractorType="query">
+                                    <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                        <query>Result/testStateOrStep</query>
+                                    </extractorProperties>
+                                </extractorInfo>
+                                <processorInfo ruleType="assert">
+                                    <ruleProperties type="com.fnfr.svt.execution.builtin.processors.AssertionPropertyGroup">
+                                        <expression>$value eq &quot;COMPLETE&quot;</expression>
+                                        <actionsWhenTrue>
+                                            <item actionId="DeclareExecutionIssue">
+                                                <actionProperties type="com.fnfr.svt.execution.builtin.actions.ExecutionIssuePropertyGroup" severity="Information">
+                                                    <message>Test is stopped on Landslide Gracefully</message>
+                                                </actionProperties>
+                                            </item>
+                                        </actionsWhenTrue>
+                                        <actionsWhenFalse>
+                                            <item actionId="RepeatStep">
+                                                <actionProperties type="com.fnfr.svt.execution.builtin.actions.RepeatStepPropertyGroup" delayBetweenRepeats="10.0"/>
+                                            </item>
+                                        </actionsWhenFalse>
+                                    </ruleProperties>
+                                </processorInfo>
+                            </item>
+                        </analysisRules>
+                    </postProcessing>
+                    <eventHandlers>
+                        <item name="OnRepeatStepMaxCountExceeded">
+                            <item actionId="DeclareExecutionIssue">
+                                <actionProperties type="com.fnfr.svt.execution.builtin.actions.ExecutionIssuePropertyGroup" severity="Information">
+                                    <message>Could not stop the Test Successfully</message>
+                                </actionProperties>
+                            </item>
+                        </item>
+                        <item name="OnNoMatchesFound">
+                            <item actionId="DeclareExecutionIssue">
+                                <actionProperties type="com.fnfr.svt.execution.builtin.actions.ExecutionIssuePropertyGroup" severity="Information">
+                                    <message>Waiting for the Test to be stopped gracefully</message>
+                                </actionProperties>
+                            </item>
+                        </item>
+                    </eventHandlers>
+                    <applicationProperties type="com.fnfr.itest.platform2.shared.documents.ntaf.NtafTransferableDocumentObject" action="ShowRunningTest" subharness="http://spirent.com/NTAF/harness/iTest/LandslideRest/Main" harness="http://spirent.com/NTAF/harness/iTest/LandslideRest/Main" harnessName="http://spirent.com/NTAF/harness/iTest/LandslideRest/Main" runningTestId="$runId0" runningTestId.inherit="false" fullInfo="true" fullInfo.inherit="false"/>
+                </item>
+                <item guid="e08826a5-4c0d-47b1-92ef-8af26419b118" action="summarize" useFieldsInCommand="false">
+                    <postProcessing>
+                        <analysisRules>
+                            <item>
+                                <extractorInfo extractorType="query">
+                                    <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
+                                        <query>TestResult()</query>
+                                    </extractorProperties>
+                                </extractorInfo>
+                                <processorInfo ruleType="store">
+                                    <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
+                                        <storageLocation>Test_Result</storageLocation>
+                                        <responseValue type="com.fnfr.documents.PropertyBoolean">false</responseValue>
+                                        <variable type="com.fnfr.documents.PropertyBoolean">true</variable>
+                                    </ruleProperties>
+                                </processorInfo>
+                            </item>
+                        </analysisRules>
+                    </postProcessing>
+                    <applicationProperties type="com.fnfr.svt.execution.kernel.ExecSummarizePropertyGroup"/>
+                </item>
+                <item guid="d6f3931c-8da3-445d-98c8-91254cb9715d" action="comment" useFieldsInCommand="false">
+                    <command>
+                        <body>Post results to ElasticSearch</body>
+                    </command>
+                    <nestedSteps>
+                        <item guid="279bf3d1-591a-4f7d-a7b4-b7fcf7f71807" action="eval" useFieldsInCommand="false">
+                            <command>
+                                <body>set jsondata &quot;
+{
+\t\\&quot;TCID\\&quot;:\\&quot;$TCID\\&quot;,
+\t\\&quot;DUT\\&quot;:\\&quot;$DUT\\&quot;,
+\t\\&quot;Date\\&quot;:\\&quot;$Date\\&quot;,
+      \\&quot;Result\\&quot;:\\&quot;$Test_Result\\&quot;,
+\t\\&quot;Report\\&quot;:\\&quot;$url\\&quot;,
+\t\\&quot;Release\\&quot;:\\&quot;$Release\\&quot;,
+\t\\&quot;Platform\\&quot;:\\&quot;$Platform\\&quot;
+}
+&quot;</body>
+                            </command>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                        <item guid="9ec9f731-ce74-4ced-afc5-b65ed73c17c4" action="eval" useFieldsInCommand="false">
+                            <command>
+                                <body>set kibana iTE</body>
+                            </command>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                        <item guid="c810dc89-a213-4e42-b3d9-09b8e42ea1fd" action="call" useFieldsInCommand="false">
+                            <command>
+                                <body>Elasticsearch_Rest.fftc#postToElasticSearch -jsondata $jsondata -session $kibana</body>
+                            </command>
+                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                        </item>
+                    </nestedSteps>
+                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
+                </item>
+            </steps>
+        </item>
+    </procedures>
+</testCase>

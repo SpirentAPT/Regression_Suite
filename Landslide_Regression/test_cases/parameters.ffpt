@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<ParameterTree version="8.0.1.0">
+    <parameters escape="true">
+        <parameters xmlns:pt="http://www.fnfr.com/schemas/parameterTree">
+            <Landslide_IP>http://10.62.224.23:8080/api/</Landslide_IP>
+            <DUT>SGW</DUT>
+            <Release>2.0</Release>
+            <Platform>Nokia</Platform>
+            <URL>https://10.62.224.11</URL>
+            <TFTP_SERVER>10.62.224.10</TFTP_SERVER>
+            <ElasticSearch_Index>test1</ElasticSearch_Index>
+        </parameters>
+    </parameters>
+</ParameterTree>
