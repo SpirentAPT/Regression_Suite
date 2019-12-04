@@ -265,42 +265,6 @@
                     </eventHandlers>
                     <applicationProperties type="com.fnfr.itest.platform2.shared.documents.ntaf.NtafTransferableDocumentObject" action="ShowRunningTest" subharness="http://spirent.com/NTAF/harness/iTest/LandslideRest/Main" harness="http://spirent.com/NTAF/harness/iTest/LandslideRest/Main" harnessName="http://spirent.com/NTAF/harness/iTest/LandslideRest/Main" runningTestId="$runId0" runningTestId.inherit="false" fullInfo="true" fullInfo.inherit="false"/>
                 </item>
-                <item guid="d6f3931c-8da3-445d-98c8-91254cb9715d" action="comment" skip="true" useFieldsInCommand="false">
-                    <command>
-                        <body>Post results to ElasticSearch</body>
-                    </command>
-                    <nestedSteps>
-                        <item guid="279bf3d1-591a-4f7d-a7b4-b7fcf7f71807" action="eval" useFieldsInCommand="false">
-                            <command>
-                                <body>set jsondata &quot;
-{
-\t\\&quot;TCID\\&quot;:\\&quot;$TCID\\&quot;,
-\t\\&quot;DUT\\&quot;:\\&quot;$DUT\\&quot;,
-\t\\&quot;Date\\&quot;:\\&quot;$Date\\&quot;,
-      \\&quot;Result\\&quot;:\\&quot;$Test_Result\\&quot;,
-\t\\&quot;Report\\&quot;:\\&quot;$url\\&quot;,
-\t\\&quot;Release\\&quot;:\\&quot;$Release\\&quot;,
-\t\\&quot;Platform\\&quot;:\\&quot;$Platform\\&quot;
-}
-&quot;</body>
-                            </command>
-                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
-                        </item>
-                        <item guid="9ec9f731-ce74-4ced-afc5-b65ed73c17c4" action="eval" useFieldsInCommand="false">
-                            <command>
-                                <body>set kibana iTE</body>
-                            </command>
-                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
-                        </item>
-                        <item guid="c810dc89-a213-4e42-b3d9-09b8e42ea1fd" action="call" useFieldsInCommand="false">
-                            <command>
-                                <body>Elasticsearch_Rest.fftc#postToElasticSearch -jsondata $jsondata -session $kibana</body>
-                            </command>
-                            <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
-                        </item>
-                    </nestedSteps>
-                    <applicationProperties type="com.fnfr.svt.documents.EmptyPropertyGroup"/>
-                </item>
             </steps>
         </item>
     </procedures>
