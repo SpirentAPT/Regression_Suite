@@ -265,27 +265,6 @@
                     </eventHandlers>
                     <applicationProperties type="com.fnfr.itest.platform2.shared.documents.ntaf.NtafTransferableDocumentObject" action="ShowRunningTest" subharness="http://spirent.com/NTAF/harness/iTest/LandslideRest/Main" harness="http://spirent.com/NTAF/harness/iTest/LandslideRest/Main" harnessName="http://spirent.com/NTAF/harness/iTest/LandslideRest/Main" runningTestId="$runId0" runningTestId.inherit="false" fullInfo="true" fullInfo.inherit="false"/>
                 </item>
-                <item guid="e08826a5-4c0d-47b1-92ef-8af26419b118" action="summarize" skip="true" useFieldsInCommand="false">
-                    <postProcessing>
-                        <analysisRules>
-                            <item>
-                                <extractorInfo extractorType="query">
-                                    <extractorProperties type="com.fnfr.svt.mapping.execution.extractors.QueryDataExtractorPropertyGroup">
-                                        <query>TestResult()</query>
-                                    </extractorProperties>
-                                </extractorInfo>
-                                <processorInfo ruleType="store">
-                                    <ruleProperties type="com.fnfr.svt.execution.builtin.processors.StoreProcessorPropertyGroup">
-                                        <storageLocation>Test_Result</storageLocation>
-                                        <responseValue type="com.fnfr.documents.PropertyBoolean">false</responseValue>
-                                        <variable type="com.fnfr.documents.PropertyBoolean">true</variable>
-                                    </ruleProperties>
-                                </processorInfo>
-                            </item>
-                        </analysisRules>
-                    </postProcessing>
-                    <applicationProperties type="com.fnfr.svt.execution.kernel.ExecSummarizePropertyGroup"/>
-                </item>
                 <item guid="d6f3931c-8da3-445d-98c8-91254cb9715d" action="comment" skip="true" useFieldsInCommand="false">
                     <command>
                         <body>Post results to ElasticSearch</body>
