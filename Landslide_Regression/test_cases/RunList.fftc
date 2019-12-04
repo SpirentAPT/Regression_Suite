@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<testCase version="8.0.1.0">
+    <procedures>
+        <item name="main">
+            <steps>
+                <item guid="8685c11a-04bc-4a51-8d5f-78640d6473f9" action="run">
+                    <command>
+                        <body>5G%20Attach-AMF%20Node-SMF%20Node-UPF%20Node-%20AMF%20Nodal_15.1.0.fftc</body>
+                    </command>
+                    <applicationProperties type="com.fnfr.svt.execution.kernel.ExecRunPropertyGroup"/>
+                </item>
+            </steps>
+        </item>
+    </procedures>
+</testCase>
